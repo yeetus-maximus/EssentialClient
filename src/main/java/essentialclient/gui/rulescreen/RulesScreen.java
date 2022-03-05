@@ -71,7 +71,7 @@ public class RulesScreen extends Screen {
 		this.widget = new ConfigListWidget(this, this.client, this.searchBox.getText());
 		this.addDrawableChild(this.widget);
 		this.addDrawableChild(this.searchBox);
-		this.addDrawableChild(new ButtonWidget(this.width / 2 - 100, this.height - 27, 200, 20, ScreenTexts.DONE, buttonWidget -> this.onClose()));
+		this.addDrawableChild(new ButtonWidget(this.width / 2 - 100, this.height - 27, 200, 20, ScreenTexts.DONE, buttonWidget -> this.close()));
 		this.setInitialFocus(this.searchBox);
 	}
 
@@ -100,7 +100,7 @@ public class RulesScreen extends Screen {
 	}
 
 	@Override
-	public void onClose() {
+	public void close() {
 		if (this.client != null) {
 			this.widget.updateAllEntriesOnClose();
 			this.client.setScreen(this.parent);

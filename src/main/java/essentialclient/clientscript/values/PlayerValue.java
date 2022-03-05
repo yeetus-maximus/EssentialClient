@@ -94,8 +94,8 @@ public class PlayerValue extends AbstractPlayerValue<ClientPlayerEntity> {
 				new MemberFunction("openInventory", this::openInventory),
 				new MemberFunction("openScreen", "screen", this::openScreen),
 				new MemberFunction("closeScreen", this::closeScreen),
-				new MemberFunction("setWalking", "boolean", (context, function) -> this.setKey(context, function, ArucasMinecraftExtension.getClient().options.keyForward)),
-				new MemberFunction("setSneaking", "boolean", (context, function) -> this.setKey(context, function, ArucasMinecraftExtension.getClient().options.keySneak)),
+				new MemberFunction("setWalking", "boolean", (context, function) -> this.setKey(context, function, ArucasMinecraftExtension.getClient().options.forwardKey)),
+				new MemberFunction("setSneaking", "boolean", (context, function) -> this.setKey(context, function, ArucasMinecraftExtension.getClient().options.sneakKey)),
 				new MemberFunction("setSprinting", "boolean", this::setSprinting),
 				new MemberFunction("dropItemInHand", "boolean", this::dropItemInHand),
 				new MemberFunction("dropAll", "itemStack", this::dropAll),
@@ -147,8 +147,8 @@ public class PlayerValue extends AbstractPlayerValue<ClientPlayerEntity> {
 			final String error = "Must pass \"hold\", \"stop\" or \"once\" into use()";
 			StringValue stringValue = function.getParameterValueOfType(context, StringValue.class, 1, error);
 			switch (stringValue.value.toLowerCase()) {
-				case "hold" -> ArucasMinecraftExtension.getClient().options.keyUse.setPressed(true);
-				case "stop" -> ArucasMinecraftExtension.getClient().options.keyUse.setPressed(false);
+				case "hold" -> ArucasMinecraftExtension.getClient().options.useKey.setPressed(true);
+				case "stop" -> ArucasMinecraftExtension.getClient().options.useKey.setPressed(false);
 				case "once" -> ((MinecraftClientInvoker) ArucasMinecraftExtension.getClient()).rightClickMouseAccessor();
 				default -> throw function.throwInvalidParameterError(error, context);
 			}
@@ -159,8 +159,8 @@ public class PlayerValue extends AbstractPlayerValue<ClientPlayerEntity> {
 			final String error = "Must pass \"hold\", \"stop\" or \"once\" into attack()";
 			StringValue stringValue = function.getParameterValueOfType(context, StringValue.class, 1, error);
 			switch (stringValue.value.toLowerCase()) {
-				case "hold" -> ArucasMinecraftExtension.getClient().options.keyAttack.setPressed(true);
-				case "stop" -> ArucasMinecraftExtension.getClient().options.keyAttack.setPressed(false);
+				case "hold" -> ArucasMinecraftExtension.getClient().options.attackKey.setPressed(true);
+				case "stop" -> ArucasMinecraftExtension.getClient().options.attackKey.setPressed(false);
 				case "once" -> ((MinecraftClientInvoker) ArucasMinecraftExtension.getClient()).leftClickMouseAccessor();
 				default -> throw function.throwInvalidParameterError(error, context);
 			}

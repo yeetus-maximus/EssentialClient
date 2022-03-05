@@ -29,7 +29,7 @@ public abstract class MinecraftClientMixin extends ReentrantThreadExecutor<Runna
 	}
 
 	@Shadow
-	private void doAttack() { }
+	protected abstract boolean doAttack();
 
 	@Shadow
 	private void doItemUse() { }

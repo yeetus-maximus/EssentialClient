@@ -32,7 +32,7 @@ public class InGameHudMixin {
 	@Redirect(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/hud/PlayerListHud;setVisible(Z)V"), require = 0)
 	private void onSetVisible(PlayerListHud playerListHud, boolean visible) {
 		if (ClientRules.TOGGLE_TAB.getValue()) {
-			KeyBinding tabKey = this.client.options.keyPlayerList;
+			KeyBinding tabKey = this.client.options.playerListKey;
 			if (tabKey.isPressed() && !tabKey.wasPressed()) {
 				tabKey.setPressed(false);
 				this.tabVisible = !this.tabVisible;

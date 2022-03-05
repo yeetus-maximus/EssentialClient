@@ -52,7 +52,7 @@ public class ClientScriptScreen extends Screen {
 	}
 
 	@Override
-	public void onClose() {
+	public void close() {
 		if (this.client != null) {
 			this.client.setScreen(this.parent);
 		}
@@ -118,7 +118,7 @@ public class ClientScriptScreen extends Screen {
 					ClientScript.INSTANCE.removeInstance(this.scriptInstance);
 					this.parent.scriptWidget.clear();
 					this.parent.scriptWidget.load(this.client);
-					this.close();
+					this.onClose();
 				}
 				catch (IOException ignored) {
 				}
@@ -163,12 +163,12 @@ public class ClientScriptScreen extends Screen {
 			super.tick();
 		}
 
-		public void close() {
+		public void onClose() {
 			EssentialUtils.getClient().setScreen(this.parent);
 		}
 
 		@Override
-		public void onClose() {
+		public void close() {
 			if (!this.newName.isEmpty() && !this.newName.equals(this.scriptInstance.toString())) {
 				try {
 					Path original = this.scriptInstance.getFileLocation();
@@ -185,7 +185,7 @@ public class ClientScriptScreen extends Screen {
 					EssentialClient.LOGGER.error(exception);
 				}
 			}
-			this.close();
+			this.onClose();
 		}
 
 		@Override

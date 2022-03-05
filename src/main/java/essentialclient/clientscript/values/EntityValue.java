@@ -169,7 +169,7 @@ public class EntityValue<T extends Entity> extends Value<T> {
 
 		private Value<?> getBiome(Context context, MemberFunction function) throws CodeError {
 			Entity entity = this.getEntity(context, function);
-			Optional<RegistryKey<Biome>> biomeKey = entity.getEntityWorld().getBiomeKey(entity.getBlockPos());
+			Optional<RegistryKey<Biome>> biomeKey = entity.getEntityWorld().getBiome(entity.getBlockPos()).getKey();
 			return biomeKey.isPresent() ? StringValue.of(biomeKey.get().getValue().getPath()) : NullValue.NULL;
 		}
 
