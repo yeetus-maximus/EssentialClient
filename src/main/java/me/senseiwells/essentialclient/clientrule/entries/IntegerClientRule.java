@@ -1,4 +1,4 @@
-package me.senseiwells.essentialclient.clientrule.entries;
+	package me.senseiwells.essentialclient.clientrule.entries;
 
 import com.google.gson.JsonElement;
 import me.senseiwells.essentialclient.utils.EssentialUtils;

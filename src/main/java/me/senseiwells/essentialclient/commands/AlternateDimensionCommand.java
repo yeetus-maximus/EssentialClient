@@ -80,7 +80,7 @@ public class AlternateDimensionCommand {
 					}
 					playerEntity.sendChatMessage("/execute in %s run tp @s %f %f %f".formatted(
 						dimension,
-						newX,
+						newX
 						playerEntity.getY(),
 						newZ
 					));
